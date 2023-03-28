@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import path from 'path';
 
 import SOLANA from '@solana/web3.js';
 const { Connection, PublicKey, LAMPORTS_PER_SOL, clusterApiUrl } = SOLANA;
@@ -59,7 +60,7 @@ app.post("/post", (req, res) => {
 })
 
 if (process.env.NODE_ENV == 'production') {
-    const path = require('path')
+
 
     app.get('/', (req, res) => {
         app.use(express.static(path.resolve(__dirname, 'public', 'dist')))
