@@ -25,7 +25,7 @@ app.use(cors());
 // })
 
 
-app.post("/post", (req, res) => {
+app.post("/post", async (req, res) => {
     const { walletAdress, amount } = req.body;
 
     console.log(req.body);
@@ -55,7 +55,7 @@ app.post("/post", (req, res) => {
             res.status(202).send(`https://explorer.solana.com/tx/${signature}?cluster=devnet`);
         } catch (err) {
             console.log("err");
-            res.status(400).send("Enter a valid public key");
+            res.status(404).send("Enter a valid public key");
         }
 
     })();
