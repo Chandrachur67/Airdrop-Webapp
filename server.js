@@ -4,7 +4,8 @@ import cors from "cors";
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
-console.log(dirname);
+console.log(path.resolve('public', 'dist'));
+
 
 import SOLANA from '@solana/web3.js';
 const { Connection, PublicKey, LAMPORTS_PER_SOL, clusterApiUrl } = SOLANA;
@@ -66,10 +67,10 @@ if (process.env.NODE_ENV == 'production') {
 
 
     app.get('/', (req, res) => {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
-        app.use(express.static(path.resolve(__dirname, 'public', 'dist')))
-        res.sendFile(path.resolve(__dirname, 'public', 'dist', 'index.html'))
+        // const __filename = fileURLToPath(import.meta.url);
+        // const __dirname = dirname(__filename);
+        app.use(express.static(path.resolve('public', 'dist')))
+        res.sendFile(path.resolve('public', 'dist', 'index.html'))
     })
 }
 
